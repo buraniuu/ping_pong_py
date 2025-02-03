@@ -31,3 +31,18 @@ win = display.set_mode((win_w,win_h))
 dispay.set_caption('Ping Pong')
 backgr = transform.scale(image.load('background/background.jpg'), 1280, 854)
 win.blit(backgr, 0, 0)
+
+def main():
+    while True:
+        win.blit(backgr, (0, 0))
+        player.reset()
+        player.move()
+
+
+        for e in event.get():
+            if e.type == QUIT:
+                return
+
+        display.update()
+
+main()
