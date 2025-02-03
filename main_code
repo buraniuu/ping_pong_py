@@ -2,6 +2,18 @@
 from pygame import *
 import pygame_menu
 
+class GameSprite(sprite.Sprite):
+    def __init__(self, player_w, player_h, player_x, player_y, player_speed, player_image):
+        super().__init__()
+        self.image = transform.scale(image.load(player_image),(player_w, player_h))
+        self.rect = self.image.get_rect()
+        self.rect.x = self.player_x
+        self.rect.y = self.player_y
+        self.player_speed = player_speed
+
+    def reset(self):
+        win.blit(self.image, (self.rect.x, self.rect.y))
+
 init()
 win_w = 1280
 win_h = 854
