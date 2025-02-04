@@ -24,6 +24,14 @@ class Player(GameSprite):
         if keys_pressed[K_s] and self.rect.y < 660:
             self.rect.y += self.player_speed
 
+class Ball(GameSprite):
+
+    def update(self):
+        self.rect.x += self.player_speed
+        self.rect.y += self.player_speed
+        if self.rect.y > 765 or self.rect.y < 0:
+            self.speed*= -1
+
 init()
 win_w = 1280
 win_h = 780
