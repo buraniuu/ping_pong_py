@@ -21,15 +21,16 @@ class Player(GameSprite):
         if keys_pressed[K_w] and self.rect.y > 0:
             self.rect.y -= self.player_speed
                 
-        if keys_pressed[K_s] and self.rect.y < 854:
+        if keys_pressed[K_s] and self.rect.y < 660:
             self.rect.y += self.player_speed
 
 init()
 win_w = 1280
-win_h = 854
+win_h = 780
 win = display.set_mode((win_w,win_h))
 dispay.set_caption('Ping Pong')
-backgr = transform.scale(image.load('background/background.jpg'), 1280, 854)
+backgr = transform.scale(image.load('background.jpg'),( 1280, 780))
+player = Player(70,120,20,600,10,'rectangle.png')
 win.blit(backgr, 0, 0)
 
 def main():
