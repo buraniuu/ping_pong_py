@@ -39,6 +39,8 @@ win = display.set_mode((win_w,win_h))
 dispay.set_caption('Ping Pong')
 backgr = transform.scale(image.load('background.jpg'),( 1280, 780))
 player = Player(70,120,20,600,10,'rectangle.png')
+player_2 = Player(70,120,1150,600,10, 'rectangle.png')
+ball = Ball(50,50,624,340,10)
 win.blit(backgr, 0, 0)
 
 def main():
@@ -46,6 +48,8 @@ def main():
         win.blit(backgr, (0, 0))
         player.reset()
         player.move()
+        player_2.reset()
+        player_2.move()
 
 
         for e in event.get():
