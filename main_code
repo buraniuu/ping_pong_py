@@ -46,6 +46,9 @@ ball = Ball(50,50,624,340,7, 'ball.png')
 win.blit(backgr, 0, 0)
 speed_x = 7
 speed_y = 7
+mixer.init()
+mixer.music.load('music.ogg')
+mixer.music.play()
 
 font.init()
 font1 = font.Font(None,35)
