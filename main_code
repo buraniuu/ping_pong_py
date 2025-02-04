@@ -30,7 +30,7 @@ class Ball(GameSprite):
         self.rect.x += self.player_speed
         self.rect.y += self.player_speed
         if self.rect.y > 765 or self.rect.y < 0:
-            self.speed*= -1
+            self.player_speed*= -1
 
 init()
 win_w = 1280
@@ -40,7 +40,7 @@ dispay.set_caption('Ping Pong')
 backgr = transform.scale(image.load('background.jpg'),( 1280, 780))
 player = Player(70,120,20,600,10,'rectangle.png')
 player_2 = Player(70,120,1150,600,10, 'rectangle.png')
-ball = Ball(50,50,624,340,10)
+ball = Ball(50,50,624,340,7, 'ball.png')
 win.blit(backgr, 0, 0)
 
 def main():
@@ -51,6 +51,8 @@ def main():
         player_2.reset()
         player_2.move()
 
+        if sprite.collide_rect(player,ball) or sprite.collide_rect(player_2, ball):
+            ball.update()
 
         for e in event.get():
             if e.type == QUIT:
