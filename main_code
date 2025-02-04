@@ -47,17 +47,32 @@ win.blit(backgr, 0, 0)
 speed_x = 7
 speed_y = 7
 
+font.init()
+font1 = font.Font(None,35)
+lose_1 = font1.render('Player 1 Lose!',True,(225,225,0))
+lose_2 = font1.render('Player 2 Lose!',True,(225,225,0))
+
+
 def main():
+    global speed_x, speed_y
     while True:
         win.blit(backgr, (0, 0))
         player.reset()
         player.move()
         player_2.reset()
         player_2.move()
-
+        ball.reset()
+        ball.update()
+ 
         if sprite.collide_rect(player,ball) or sprite.collide_rect(player_2, ball):
             speed_x *= -1
             speed_y *= -1
+
+        if ball.rect.x < 0:
+            win.blit(lose_1,(624,340))
+        if ball.rect.x > 1280:
+            win.blit(lose_2,(624,340))
+
 
         for e in event.get():
             if e.type == QUIT:
