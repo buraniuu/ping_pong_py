@@ -16,12 +16,20 @@ class GameSprite(sprite.Sprite):
 
 class Player(GameSprite):
 
-    def move_up(self):
+    def move(self):
         keys_pressed = key.get_pressed()
         if keys_pressed[K_w] and self.rect.y > 0:
             self.rect.y -= self.player_speed
                 
         if keys_pressed[K_s] and self.rect.y < 660:
+            self.rect.y += self.player_speed
+
+    def move_2(self):
+        keys_pressed = key.get_pressed()
+        if keys_pressed[K_o] and self.rect.y > 0:
+             self.rect.y -= self.player_speed
+                    
+        if keys_pressed[K_l] and self.rect.y < 660:
             self.rect.y += self.player_speed
 
 class Ball(GameSprite):
@@ -63,7 +71,7 @@ def main():
         player.reset()
         player.move()
         player_2.reset()
-        player_2.move()
+        player_2.move_2()
         ball.reset()
         ball.update()
  
